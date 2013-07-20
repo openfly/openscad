@@ -1,0 +1,20 @@
+== Make your own font ==
+
+* Import into Linux (otf seemed to work)
+* Using Inkscape, save individual letters off to .eps.  Use my naming scheme to minimize effort to rename files.
+* Convert to dxf using the following command:
+for file in $(ls *eps); do filename=$(echo $file | sed 's/\(.\).eps/\1/'); echo;  pstoedit -dt -f dxf:-polyaslines $filename.eps $filename.dxf; done
+* Move files into seperate directory, example:
+mv *dxf ../fnt-LeagueGothic
+* Open OpenSCADFont, and adjust fnt_directory variable
+
+
+
+Other Notes
+
+For creating a bulk of the elseif statement within the directory, some command-line magic:
+
+for file in $(ls *dxf); do filename=$(echo $file | sed 's/\(.\).dxf/\1/'); echo "  } else if (char == \"$filename\") {"; echo "    scale([scale_x,scale_y,0]) linear_extrude(file=str(fnt_directory,\"$filename.dxf\"),height=height, convexity=10);"; done > ../LeagueGothic.code
+
+You shouldn't have to run this command, unless you want to adjust the naming convention extensively.
+
