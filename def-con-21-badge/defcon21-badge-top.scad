@@ -1,6 +1,4 @@
-// Hack RF Case - openfly
-// usb hole 10mm x 7mm
-// antenna hole = 6.5 mm radius
+// Def Con 21 Badge Case - openfly
 
 // outer shell parameters
 pad = 0.1;	// Padding to maintain manifold
@@ -9,6 +7,13 @@ box_w = 80;	// Width
 box_h = 6;	// Height
 round_r = 2;	// Radius of round
 smooth = 45;	// Number of facets of rounding cylinder
+
+module horns(){
+    translate([-47,0,1])
+    rotate(a=[-60,0,90])
+    scale([0.75,0.75,0.75])
+    import("The_Horns_fixed.stl");
+}
 
 place_screwholes();
 
@@ -29,6 +34,7 @@ module cutout_top() {
 }
 
 module top() {
+    horns();
     difference() { 
         outer_shell(pad, box_l, box_w, box_h, round_r, smooth);
         translate([0,0,-2])
@@ -226,6 +232,13 @@ module screwplace() {
         }
     }
     translate([-45, -35, 0]) {
+        difference() {
+            screwout();
+            screwin();
+        }
+    }
+    translate([-69h, 0, 4]) {
+        rotate([90,0,0])
         difference() {
             screwout();
             screwin();
