@@ -21,7 +21,7 @@ module place_screwholes() {
 module cutout_top() {
     difference() {
         top();
-        outer_shell(0.1, 89, 64, 1.5, round_r, smooth);
+        outer_shell(0.1, 91, 66, 1.5, round_r, smooth);
     }
 }
 

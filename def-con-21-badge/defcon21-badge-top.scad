@@ -28,7 +28,7 @@ module place_screwholes() {
 module cutout_top() {
     difference() {
         top();
-        outer_shell(0.1, 89, 64, 3, round_r, smooth);
+        outer_shell(0.1, 91, 66, 3, round_r, smooth);
         outer_shell(0.1, 80, 55, 8, round_r, smooth);
     }
 }
@@ -237,7 +237,7 @@ module screwplace() {
             screwin();
         }
     }
-    translate([-69h, 0, 4]) {
+    translate([-66, 0, 3]) {
         rotate([90,0,0])
         difference() {
             screwout();
