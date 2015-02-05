@@ -1,7 +1,11 @@
 
 module rod_hole() {
-    translate([-20,0,-25])
-    cylinder(h=50, r=9.2, $fn=100, center = false);
+    translate([-20,0,-25]) {
+        cylinder(h=50, r=10, $fn=100, center = false);
+    }
+    rotate(a=[0,0,125]) translate([10,6,-25]) {
+        cube(size = [50,20,40], center = false);
+    }
 }
 
 module style_cut() {
@@ -45,7 +49,9 @@ module slim_wall() {
 module hole_panel() {
     difference(){
         slim_wall();
-        rod_hole();     
+        rod_hole(); 
+        translate([-40,0,0]) rod_hole();    
+        translate([-80,0,0]) rod_hole();    
     }
 }
 
